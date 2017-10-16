@@ -39,13 +39,13 @@ class SessionsController < ApplicationController
 
     if @user
       session[:user_id] = @user.id
-      flash[:success] = "#{@user.name} is now logged in"
+      flash[:success] = "#{@user.username} is now logged in"
     else
-      @user = User.new(uid: @auth_hash['uid'], provider: @auth_hash['provider'], name: @auth_hash['info']['nickname'], email: @auth_hash['info']['email'])
+      @user = User.new(uid: @auth_hash['uid'], provider: @auth_hash['provider'], username: @auth_hash['info']['nickname'], email: @auth_hash['info']['email'])
 
       if @user.save
         session[:user_id] = @user.id
-        flash[:success] = "Welcome #{@user.name}"
+        flash[:success] = "Welcome #{@user.username}"
       else
         flash[:error] = "Unable to save user!"
       end
