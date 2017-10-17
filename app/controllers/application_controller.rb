@@ -12,6 +12,11 @@ private
   def find_user
     if session[:user_id]
       @login_user = User.find_by(id: session[:user_id])
+    else
+      #if not a registered user, redirect to homepage
+      flash[:status] = :failure
+      flash[:result_text] = "You must be logged in"
+      redirect_to root_path
     end
   end
 end

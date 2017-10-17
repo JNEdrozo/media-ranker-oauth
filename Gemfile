@@ -47,7 +47,7 @@ group :development, :test do
   gem 'byebug', platform: :mri
 
   # Improve the error message you get in the browser
-  gem 'better_errors'
+  # gem 'better_errors'
 
   # Use pry for rails console
   gem 'pry-rails'
