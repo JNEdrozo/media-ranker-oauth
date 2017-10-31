@@ -22,5 +22,36 @@ Minitest::Reporters.use!(
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
+
   # Add more helper methods to be used by all tests here...
+
+  def setup
+    OmniAuth.config.test_mode = true
+  end
+
+  def auth_hash_github
+    return {
+      provider: "github",
+      uid: 987654321,
+      info: {
+        email: "test-github-user@example.com",
+        nickname: "Test GitHub User"
+      }
+    }
+  end
+
+  def auth_hash(user)
+    return {
+      provider: user.provider,
+      uid: user.uid,
+      info: auth_hash_github[:info]
+    }
+  end
+
+  def login_github(user = nil)
+    auth_hash = user ? auth_hash(user) : auth_hash_github
+    OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(auth_hash)
+
+    get auth_callback_github_path
+  end
 end

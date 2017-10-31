@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  skip_before_action :find_user 
+  skip_before_action :find_user
 
   def login_form
   end
@@ -52,7 +52,6 @@ class SessionsController < ApplicationController
         flash[:error] = "Unable to save user!"
       end
     end
-
     redirect_to root_path
   end
 end
