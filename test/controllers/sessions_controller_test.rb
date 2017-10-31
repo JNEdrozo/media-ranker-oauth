@@ -48,6 +48,19 @@ describe SessionsController do
       end
     end
 
+    # describe "#login" do
+    #   it "responds with bad request if given invalid user data" do
+    #
+    #     start_count = User.count
+    #     user1 = User.new(uid: 99998, provider: 'not-github')
+    #
+    #     login_github(user1)
+    #     must_respond_with :bad_request
+    #     User.count.must_equal start_count
+    #
+    #   end
+    # end
+    
     #DAN'S TESTS:
     # it "succeeds for a new user" do
     #   username = "test_user"

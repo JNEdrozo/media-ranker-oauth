@@ -4,8 +4,11 @@ class ApplicationController < ActionController::Base
   before_action :find_user
 
   def render_404
-    # DPR: supposedly this will actually render a 404 page in production
-    raise ActionController::RoutingError.new('Not Found')
+    # # DPR: supposedly this will actually render a 404 page in production
+    # raise ActionController::RoutingError.new('Not Found')
+    # Above code does not seem to pass test?
+
+    render file: "#{Rails.root}/public/404.html" , status: :not_found
   end
 
 private
